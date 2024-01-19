@@ -52,7 +52,7 @@ const App = () => {
   return (
     <div className="container">
       <div className="header">
-        <h1>Courses Flow</h1>
+        <h1>Courseflow</h1>
         <form onSubmit={submitAddNode}>
           <label>Course: <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input></label>
           <button className="btn" type="submit" >Add a new course</button>
