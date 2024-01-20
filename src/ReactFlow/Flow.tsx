@@ -33,8 +33,8 @@ const Flow = ({ onDelete }: { onDelete: any}) => {
   } = useNodeEdgeStore(selector)
 
   const onNodeClick = (_evt: any, node: Node) => {
-    console.log(node.data.label)
-    console.log("Before deletion ", onDelete.current)
+    // console.log(node.data.label)
+    // console.log("Before deletion ", onDelete.current)
     if (onDelete.current)
     {
       deleteNode(node)
