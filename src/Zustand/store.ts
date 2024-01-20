@@ -72,8 +72,11 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
     generateFlow: (flow: string[]) => {
         let newNode: Node 
         let newNodeList: Node[] = []
+        let newEdge: Edge 
+        let newEdgeList: Edge[] = []
         let i = 0, locY: number = 100
-
+        
+        ///
         for (; i < flow.length; i++)
         {
             newNode = {
@@ -84,14 +87,25 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
 
             newNodeList.push(newNode)
             locY += 100
+
+            if (i == 0)
+                continue 
+            
+            newEdge = {
+                id: i.toString(),
+                source: (i - 1).toString(),
+                target: i.toString(),
+                animated: true,
+            }
+            newEdgeList.push(newEdge)
         }
 
         set({
             nodeId: i,
             nodes: newNodeList,
-            edges: []
+            edges: newEdgeList
         })
-    }
+    } /// end of generateFlow
 })
 );
    
