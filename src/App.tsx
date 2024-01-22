@@ -4,7 +4,7 @@ import Flow from "./ReactFlow/Flow";
 import { useRef, useState } from "react";
 
 import useNodeEdgeStore from "./Zustand/store";
-import { GenerateFlow } from "./Zustand/NodesAndEdges";
+import { GenerateFlow } from "./Zustand/GenerateFlow";
 
 const selector = (state: any) => ({
   addNode: state.addNode,

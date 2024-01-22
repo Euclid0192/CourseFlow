@@ -5,11 +5,17 @@ import ReactFlow, {
   BackgroundVariant,
   Node
 } from "reactflow";
+import { useMemo } from "react";
 
 import "./Flow.css"
 import "reactflow/dist/style.css";
 import useNodeEdgeStore from "../Zustand/store";
 import { useRef } from "react";
+
+import GeneratedNode from "./GeneratedNode";
+
+const nodeTypes = useMemo(() => ({ generated: GeneratedNode }), []);
+
 
 const selector = (state: any) => ({
   nodes: state.nodes,
