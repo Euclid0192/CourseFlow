@@ -1,16 +1,18 @@
 import {
     Node,
-    Edge
+    Edge,
+    NodeTypes
 } from 'reactflow'
 import { useMemo } from 'react';
 
-import GeneratedNode from "../ReactFlow/GeneratedNode";
+import GeneratedNode from '../ReactFlow/GeneratedNode';
 
-const nodeTypes = useMemo(() => ({ generated: GeneratedNode }), []);
+/// List of customized node types
+export const nodeTypes: NodeTypes = { generated: GeneratedNode }
 
 export const initialNodes: Node[] = [
     {
-        id: "1", data: { label: "CSE480" }, position: { x: 250, y: 100 }
+        id: "1", data: { label: "CSE480" }, position: { x: 250, y: 100 }, type: 'generated'
     },
     { id: "2", data: { label: "CSE331" }, position: { x: 100, y: 10 } },
     { id: "3", data: { label: "CSE335" }, position: { x: 400, y: 10 } },

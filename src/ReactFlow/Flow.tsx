@@ -3,12 +3,18 @@ import ReactFlow, {
   MiniMap,
   Controls,
   BackgroundVariant,
-  Node
+  Node,
+  DefaultEdgeOptions,
 } from "reactflow";
 
 import "./Flow.css"
 import "reactflow/dist/style.css";
 import useNodeEdgeStore from "../Zustand/store";
+import { nodeTypes } from "../Zustand/NodesAndEdges";
+
+const defaultEdgeOptions: DefaultEdgeOptions = {
+  animated: true,
+}
 
 
 const selector = (state: any) => ({
@@ -54,6 +60,8 @@ const Flow = ({ onDelete }: { onDelete: any}) => {
         fitView
         zoomOnScroll={false}
         onNodeClick={onNodeClick}
+        nodeTypes={nodeTypes}
+        defaultEdgeOptions={defaultEdgeOptions}
       >
         <MiniMap />
         <Controls />
