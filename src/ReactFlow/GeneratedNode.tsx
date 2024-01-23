@@ -1,5 +1,6 @@
 /// Node type generated in flow
 import { Handle, NodeProps, Position } from "reactflow"
+import "./GeneratedNode.css"
 
 export type GeneratedData = {
     label: string
@@ -8,7 +9,7 @@ export type GeneratedData = {
 const GeneratedNode = ({ data }: NodeProps<GeneratedData>) => {
   return (
     <>
-        <div>
+        <div className="generate-node">
             <label htmlFor="text">{data.label}</label>
         </div>
         <Handle type="target" position={Position.Top} />

@@ -51,6 +51,8 @@ h1 {
   background-color: #eeefff;
   cursor: pointer;
   transition: var(--transition);
+
+  box-shadow: -8px -8px 5px #00308F;
 }
 
 .btn:hover {

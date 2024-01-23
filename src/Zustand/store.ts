@@ -81,6 +81,7 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
         {
             newNode = {
                 id: i.toString(),
+                type: 'generated',
                 data: {label: flow[i]},
                 position: {x: 250, y: locY}
             }

@@ -3,7 +3,6 @@ import {
     Edge,
     NodeTypes
 } from 'reactflow'
-import { useMemo } from 'react';
 
 import GeneratedNode from '../ReactFlow/GeneratedNode';
 
