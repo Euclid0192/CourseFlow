@@ -9,10 +9,12 @@ import {
     Connection,
     applyNodeChanges,
     applyEdgeChanges,
-    addEdge
+    addEdge,
+    XYPosition
 } from 'reactflow';
 import { create } from 'zustand';   
 import { initialNodes, initialEdges } from './NodesAndEdges';
+import { nanoid } from 'nanoid';
 
 export type RFState = {
     nodeId: number,
@@ -22,6 +24,7 @@ export type RFState = {
     onEdgesChange: OnEdgesChange;
     onConnect: OnConnect;
     addNode: (title: string) => void;
+    addNodeDrag: (parentNodeId: string, position: XYPosition) => void;
     deleteNode: (node: Node) => void;
     clear: () => void
     generateFlow: (flow: string[]) => void
@@ -55,6 +58,25 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
         set({
             nodeId: get().nodeId + 1,
             nodes: [...get().nodes, newNode]
+        })
+    },
+    addNodeDrag: (parentNodeId: string, position: XYPosition) => {
+        const newNode: Node = {
+            id: get().nodeId.toString(),
+            data: { label: 'New Node'},
+            position
+        }
+
+        const newEdge: Edge = {
+            id: nanoid(),
+            source: parentNodeId,
+            target: newNode.id
+        }
+
+        set({
+            nodeId: get().nodeId + 1,
+            nodes: [...get().nodes, newNode],
+            edges: [...get().edges, newEdge]
         })
     },
     deleteNode: (node: Node) => {
