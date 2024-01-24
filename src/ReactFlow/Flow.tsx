@@ -80,7 +80,7 @@ const Flow = ({ onDelete }: { onDelete: any}) => {
     }
     
     startNodeId.current = null
-  }, []);
+  }, [screenToFlowPosition]);
 
 
   const onNodeClick = (_evt: any, node: Node) => {
