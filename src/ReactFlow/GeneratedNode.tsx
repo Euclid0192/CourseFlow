@@ -12,8 +12,8 @@ const GeneratedNode = ({ data }: NodeProps<GeneratedData>) => {
         <div className="generate-node">
             <label htmlFor="text">{data.label}</label>
         </div>
-        <Handle type="target" position={Position.Top} />
-        <Handle type="source" position={Position.Bottom} />
+        <Handle type="target" position={Position.Top} className="generated__handle__target" isConnectable={false}/>
+        <Handle type="source" position={Position.Bottom} className="generated__handle__source" isConnectable={false} />
     </>
   )
 }

@@ -17,8 +17,9 @@
     align-items: center;
 }
 
-/* .react-flow__handle.target, .react-flow__handle.source {
+.generated__handle__target, .generated__handle__source {
     top: 50%;
     pointer-events: none;
     opacity: 0;
-} */
+}
+

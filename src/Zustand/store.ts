@@ -26,6 +26,7 @@ export type RFState = {
     addNode: (title: string) => void;
     addNodeDrag: (parentNodeId: string, position: XYPosition) => void;
     deleteNode: (node: Node) => void;
+    updateNodeLabel: (id: string, newLabel: string) => void;
     clear: () => void
     generateFlow: (flow: string[]) => void
 };
@@ -53,7 +54,9 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
         const newNode: Node = {
             id: get().nodeId.toString(),
             data: { label: title},
-            position: { x: 100, y: 100 }
+            position: { x: 100, y: 100 },
+            type: 'usersCreated',
+            dragHandle: '.custom-drag-handle'
         }
         set({
             nodeId: get().nodeId + 1,
@@ -64,7 +67,9 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
         const newNode: Node = {
             id: get().nodeId.toString(),
             data: { label: 'New Node'},
-            position
+            position,
+            type: 'usersCreated',
+            dragHandle: '.custom-drag-handle'
         }
 
         const newEdge: Edge = {
@@ -82,6 +87,16 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
     deleteNode: (node: Node) => {
         set({
             nodes: get().nodes.filter((nd) => nd.id != node.id)
+        })
+    },
+    updateNodeLabel: (id: string, newLabel: string) => {
+        set({
+            nodes: get().nodes.map((node) => {
+                if (node.id == id)
+                    node.data = { ...node.data, label: newLabel }
+
+                return node
+            })
         })
     },
     clear: () => {

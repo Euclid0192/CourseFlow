@@ -5,9 +5,10 @@ import {
 } from 'reactflow'
 
 import GeneratedNode from '../ReactFlow/GeneratedNode';
+import UsersCreatedNode from '../ReactFlow/UsersCreatedNode';
 
 /// List of customized node types
-export const nodeTypes: NodeTypes = { generated: GeneratedNode }
+export const nodeTypes: NodeTypes = { generated: GeneratedNode, usersCreated: UsersCreatedNode }
 
 export const initialNodes: Node[] = [
     {

@@ -18,7 +18,6 @@ import "./Flow.css"
 import "reactflow/dist/style.css";
 import useNodeEdgeStore from "../Zustand/store";
 import { nodeTypes } from "../Zustand/NodesAndEdges";
-import { env } from "process";
 
 /// Edge options
 const defaultEdgeOptions: DefaultEdgeOptions = {
