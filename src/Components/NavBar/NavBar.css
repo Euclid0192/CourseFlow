@@ -1,0 +1,31 @@
+.nav-bar {
+    background: linear-gradient(45deg, #090979 0%, #00d4ff 100%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    height: 80px;
+    width: 100vw;
+    top: 0px;
+    left: 0;
+}
+
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+
+.title p {
+    color: #C8F578;
+    font-weight: bold;
+    font-size: 50px;
+    margin-right: 20px;
+}
+
+.nav-link {
+    font-size: large;
+    color: #C8F578;
+}
