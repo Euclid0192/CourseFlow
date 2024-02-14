@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './Home.css'
 import { TypeAnimation } from 'react-type-animation'
+import { Brush, Inspect } from 'grommet-icons'
 
 const Home = () => {
 
@@ -32,8 +33,14 @@ const Home = () => {
       </div>
 
       <div className='home__view--right'>
-        <button className='btn home__btn' onClick={() => buttonClick('/main')}>Try it now!</button>
-        <button className='btn home__btn' onClick={() => buttonClick('/about')}>Tutorial</button>
+        <button className='btn home__btn' onClick={() => buttonClick('/main')}>
+          Try it now!
+          <Brush className='home__btn--icon'/>
+        </button>
+        <button className='btn home__btn' onClick={() => buttonClick('/about')}>
+          Tutorial
+          <Inspect className='home__btn--icon'/>
+        </button>
       </div>
     </div>
   )

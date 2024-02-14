@@ -29,3 +29,7 @@
 .home__btn {
     font-size: 2em;
 }
+
+.home__btn--icon {
+    margin-left: 5px;
+}
