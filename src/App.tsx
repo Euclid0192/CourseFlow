@@ -1,6 +1,6 @@
 import "reactflow/dist/style.css";
 import "./App.css"
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import NavBar from "./Components/NavBar/NavBar";
 import MainFeature from "./Components/MainFeature/MainFeature";

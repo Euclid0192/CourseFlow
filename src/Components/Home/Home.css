@@ -1,0 +1,31 @@
+.home__container {
+    background: linear-gradient(135deg, #e3b5ce 0%, #8ac8e7 100%);
+    height: calc(100vh - 80px);
+    width: 100vw;
+    display: grid;
+    margin-top: 80px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.home__view--left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding-left: 50px;
+    color: #C8F578;
+    font-size: x-large;
+    font-weight: bold;
+    background: transparent;
+}
+
+.home__view--right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.home__btn {
+    font-size: 2em;
+}

@@ -1,5 +1,6 @@
 .nav-bar {
-    background: linear-gradient(45deg, #090979 0%, #00d4ff 100%);
+    /* background: linear-gradient(45deg, #090979 0%, #00d4ff 100%); */
+    background: #64bfec;
     display: flex;
     justify-content: space-around;
     align-items: center;
