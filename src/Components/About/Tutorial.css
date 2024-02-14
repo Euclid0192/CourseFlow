@@ -1,0 +1,21 @@
+.about__tutorial {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.about__tutorial--left-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__tutorial--right-view {
+    background: #8ac8e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -10px 0px 30px #C3DAF5;
+    border-radius: 25% 0px 0px 25%;
+}

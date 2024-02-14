@@ -1,0 +1,6 @@
+.about__container {
+    margin-top: 80px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background: linear-gradient(135deg, #fb74a8 0%, #8ac8e7 100%);
+}
