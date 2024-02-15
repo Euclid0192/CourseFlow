@@ -13,8 +13,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   --btn-hover-transition: all 400ms ease;
-
   --main-green: #C8F578;
+  --bg-gradient: linear-gradient(135deg, #fb74a8 0%, #8ac8e7 100%);
 }
 
 a {

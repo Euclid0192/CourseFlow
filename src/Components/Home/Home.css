@@ -1,5 +1,5 @@
 .home__container {
-    background: linear-gradient(135deg, #fb74a8 0%, #8ac8e7 100%);
+    background: var(--bg-gradient);
     height: calc(100vh - 80px);
     width: 100vw;
     display: grid;
