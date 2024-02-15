@@ -13,7 +13,7 @@
     align-items: center;
     text-align: left;
     padding-left: 50px;
-    color: #C8F578;
+    color: var(--main-green);
     font-size: x-large;
     font-weight: bold;
     background: transparent;

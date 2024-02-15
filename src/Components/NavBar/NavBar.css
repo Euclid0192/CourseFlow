@@ -20,7 +20,7 @@
 }
 
 .title p {
-    color: #C8F578;
+    color: var(--main-green);
     font-weight: bold;
     font-size: 50px;
     margin-right: 20px;
@@ -28,5 +28,5 @@
 
 .nav-link {
     font-size: large;
-    color: #C8F578;
+    color: var(--main-green);
 }

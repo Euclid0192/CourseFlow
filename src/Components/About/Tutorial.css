@@ -6,9 +6,43 @@
 }
 
 .about__tutorial--left-view {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
+    text-align: justify;
+    padding: 20px;
+    color: #FAFA33;
+}
+
+ul {
+    list-style-type: '🔔 ';
+}
+
+
+.mode {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--main-green);
+    margin: 0
+}
+
+.nodes-illustration {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.nodes-img {
+    width: 275px;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 15%;
+}
+
+.img-note {
+    margin: 0;
+    text-align: center;
 }
 
 .about__tutorial--right-view {
