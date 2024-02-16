@@ -2,7 +2,7 @@
 import { Handle, NodeProps, Position } from "reactflow"
 import "./UsersCreatedNode.css"
 import { Pan } from "grommet-icons"
-import useNodeEdgeStore, { RFState } from "../Zustand/store"
+import useNodeEdgeStore, { RFState } from "../Zustand/storeRF"
 
 export type UsersCreatedData = {
     label: string

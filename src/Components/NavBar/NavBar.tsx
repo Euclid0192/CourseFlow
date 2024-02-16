@@ -1,6 +1,6 @@
-import { Link, NavLink, Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import './NavBar.css'
-import { Inherit } from "grommet-icons"
+import FlowChartIcon from "remixicon-react/FlowChartIcon"
 
 const NavBar = () => {
   return (
@@ -8,7 +8,7 @@ const NavBar = () => {
       <nav className="nav-bar">
           <div className="title">
               <p className="">CourseFlow</p>
-              <Inherit className="title-icon" size="50px" color="#C8F578"/>
+              <FlowChartIcon className="title-icon" size="50px" color="#C8F578"/>
           </div>
           <Link to="/" className="nav-link">Home </Link>
           <Link to="/about" className="nav-link">About</Link>

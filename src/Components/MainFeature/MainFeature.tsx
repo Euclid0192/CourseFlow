@@ -3,7 +3,7 @@ import "./MainFeature.css"
 import Flow from "../../ReactFlow/Flow"
 import { useRef, useState } from "react";
 
-import useNodeEdgeStore from "../../Zustand/store";
+import useNodeEdgeStore from "../../Zustand/storeRF";
 import { GenerateFlow } from "../../Zustand/GenerateFlow";
 
 const selector = (state: any) => ({

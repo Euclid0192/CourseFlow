@@ -16,7 +16,7 @@ import { useRef, useCallback } from "react";
 
 import "./Flow.css"
 import "reactflow/dist/style.css";
-import useNodeEdgeStore from "../Zustand/store";
+import useNodeEdgeStore from "../Zustand/storeRF";
 import { nodeTypes } from "../Zustand/NodesAndEdges";
 
 /// Edge options

@@ -8,6 +8,10 @@ const selector = (state: AuthState) => ({
 
 const { accessToken } = useAuthStore(selector)
 
-axios.defaults.baseURL='http://localhost:3000'
-axios.defaults.headers.common['Authorization'] = accessToken
-axios.defaults.headers.post['Content-Type'] = 'application/json'
+const axiosInstance = axios.create()
+
+axiosInstance.defaults.baseURL='http://localhost:3000'
+axiosInstance.defaults.headers.common['Authorization'] = accessToken
+axiosInstance.defaults.headers.post['Content-Type'] = 'application/json'
+
+export default axiosInstance
