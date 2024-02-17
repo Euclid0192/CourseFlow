@@ -60,7 +60,7 @@ const MainFeature = () => {
         <button className="btn" onClick={submitDeleteNode}>Delete a course</button>
         <button className="btn" onClick={submitGenerate}>Generate CourseFlow</button>
       </div>
-      <Flow onDelete={onDelete}/>
+      <Flow onDelete={onDelete} />
     </div>
   );
 };

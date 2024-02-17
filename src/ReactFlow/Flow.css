@@ -1,5 +1,7 @@
 .flow__container {
     width: 100vw;
-    height: 83%;
+    height: calc(100vh - 250px);
     background-color: aliceblue;
+    position: absolute;
+    top: 250px;
 }
