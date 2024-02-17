@@ -2,8 +2,16 @@ import './Login.css'
 import { useState } from 'react'
 import axiosInstance from '../../configs/axios'
 import { useNavigate } from 'react-router-dom'
+import useAuthStore from '../../Zustand/storeAuth'
+import { AuthState } from '../../Zustand/storeAuth'
+
+const selector = (state: AuthState) => ({
+    accessToken: state.accessToken
+})
 
 const Login = () => {
+
+  const { accessToken } = useAuthStore(selector)
 
   const [ username, setUsername ] = useState<string>("")
   const [ password, setPassword ] = useState<string>("")
@@ -26,7 +34,12 @@ const Login = () => {
 
       const response = await axiosInstance.post(
         '/auth/login',
-        {username, password}
+        {username, password},
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        }
       )
 
       console.log("Response from post request ", response)
@@ -36,15 +49,10 @@ const Login = () => {
     } catch (err: any) {
       console.log("Submit error: ", err)
 
-      const statusCode = err!.response?.status
-      console.log(statusCode)
+      const errMsg = err!.response?.data?.message
+      console.log(errMsg)
 
-      if (statusCode == 401)
-      {
-        setErr("User not found")
-      } else {
-        setErr("Incorrect password")
-      }
+      setErr(errMsg)
     } 
   }
 
