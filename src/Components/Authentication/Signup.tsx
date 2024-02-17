@@ -6,12 +6,13 @@ import useAuthStore from '../../Zustand/storeAuth'
 import { AuthState } from '../../Zustand/storeAuth'
 
 const selector = (state: AuthState) => ({
-    accessToken: state.accessToken
+    setAccessToken: state.setAccessToken,
+    setRefreshToken: state.setRefreshToken
 })
 
 const Signup = () => {
 
-  const { accessToken } = useAuthStore(selector)
+  const { setAccessToken, setRefreshToken } = useAuthStore(selector)
 
   const [ username, setUsername ] = useState<string>("")
   const [ password, setPassword ] = useState<string>("")
@@ -38,15 +39,13 @@ const Signup = () => {
       const response = await axiosInstance.post(
         '/auth/signup',
         { username, password },
-        {
-          headers: {
-            'Authorization': `Bearer ${accessToken}`
-          }
-        }
       )
 
       console.log("Response from post request ", response)
       console.log("Signup successfully!")
+      const data = response?.data 
+      setAccessToken(data?.token)
+      setRefreshToken(data?.refreshToken)
 
       navigate('/main')
 
