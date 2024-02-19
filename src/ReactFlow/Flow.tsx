@@ -3,14 +3,11 @@ import ReactFlow, {
   MiniMap,
   Controls,
   BackgroundVariant,
-  Node,
   DefaultEdgeOptions,
   OnConnectStart,
   OnConnectEnd,
   useReactFlow,
-  XYPosition,
   NodeOrigin,
-  useStoreApi
 } from "reactflow";
 import { useRef, useCallback } from "react";
 
@@ -35,10 +32,9 @@ const selector = (state: any) => ({
   onConnect: state.onConnect,
   addNode: state.addNode,
   addNodeDrag: state.addNodeDrag,
-  deleteNode: state.deleteNode,
 });
 
-const Flow = ({ onDelete }: { onDelete: any}) => {
+const Flow = () => {
 
   const {
     nodes,
@@ -46,7 +42,6 @@ const Flow = ({ onDelete }: { onDelete: any}) => {
     onNodesChange,
     onEdgesChange,
     onConnect,
-    deleteNode,
     addNodeDrag
   } = useNodeEdgeStore(selector)
 
@@ -82,16 +77,16 @@ const Flow = ({ onDelete }: { onDelete: any}) => {
   }, [screenToFlowPosition]);
 
 
-  const onNodeClick = (_evt: any, node: Node) => {
-    // console.log(node.data.label)
-    // console.log("Before deletion ", onDelete.current)
-    if (onDelete.current)
-    {
-      deleteNode(node)
-      onDelete.current = false
-    }
-    console.log("After deletion (if at all): ", onDelete.current)
-  } 
+  // const onNodeClick = (_evt: any, node: Node) => {
+  //   // console.log(node.data.label)
+  //   // console.log("Before deletion ", onDelete.current)
+  //   if (onDelete.current)
+  //   {
+  //     deleteNode(node)
+  //     onDelete.current = false
+  //   }
+  //   console.log("After deletion (if at all): ", onDelete.current)
+  // } 
 
   return (
     <div className="flow__container">
@@ -106,7 +101,6 @@ const Flow = ({ onDelete }: { onDelete: any}) => {
         fitView
         zoomOnScroll={false}
         panOnScroll
-        onNodeClick={onNodeClick}
         nodeTypes={nodeTypes}
         nodeOrigin={nodeOrigin}
         defaultEdgeOptions={defaultEdgeOptions}

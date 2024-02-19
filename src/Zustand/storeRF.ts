@@ -25,7 +25,7 @@ export type RFState = {
     onConnect: OnConnect;
     addNode: (title: string) => void;
     addNodeDrag: (parentNodeId: string, position: XYPosition) => void;
-    deleteNode: (node: Node) => void;
+    deleteNode: (title: string) => void;
     updateNodeLabel: (id: string, newLabel: string) => void;
     clear: () => void
     generateFlow: (flow: string[]) => void
@@ -84,9 +84,9 @@ const useNodeEdgeStore = create<RFState>()((set, get) => ({
             edges: [...get().edges, newEdge]
         })
     },
-    deleteNode: (node: Node) => {
+    deleteNode: (title: string) => {
         set({
-            nodes: get().nodes.filter((nd) => nd.id != node.id)
+            nodes: get().nodes.filter((nd) => nd.data.label != title && title != "New Node")
         })
     },
     updateNodeLabel: (id: string, newLabel: string) => {

@@ -1,7 +1,7 @@
 import "reactflow/dist/style.css";
 import "./MainFeature.css"
 import Flow from "../../ReactFlow/Flow"
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import useNodeEdgeStore from "../../Zustand/storeRF";
 import { GenerateFlow } from "../../Zustand/GenerateFlow";
@@ -17,26 +17,36 @@ const MainFeature = () => {
 
   const {
     addNode,
+    deleteNode,
     clear,
     generateFlow
   } = useNodeEdgeStore(selector)
 
   const [ title, setTitle ] = useState('') 
-  const onDelete = useRef(false)
-
 
   /// Adding nodes
-  const submitAddNode = (evt: any) => {
-    evt.preventDefault()
+  const submitAddNode = () => {
+
     if (title !== "")
       addNode(title)
 
     setTitle("")
   }
 
+  /// Add nodes on Enter
+  const submitAddNodeOnEnter = (e: any) => {
+
+    if (e.key === "Enter")
+      submitAddNode()
+  }
+
   /// Deleting nodes
   const submitDeleteNode = () => {
-    onDelete.current = true
+
+    if (title !== "" && title !== "New Node")
+      deleteNode(title)
+
+    setTitle("")
   }
 
   /// Generate flow
@@ -52,15 +62,19 @@ const MainFeature = () => {
   return (
     <div className="container">
       <div className="header">
-        <form onSubmit={submitAddNode}>
-          <label>Course: <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input></label>
-          <button className="btn" type="submit" >Add a new course</button>
-        </form>
-        <button className="btn" onClick={clear}>Clear Everything</button>
-        <button className="btn" onClick={submitDeleteNode}>Delete a course</button>
-        <button className="btn" onClick={submitGenerate}>Generate CourseFlow</button>
+        <div>
+          <label className="course">Course: 
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} onKeyDown={(e) => submitAddNodeOnEnter(e)}></input>
+          </label>
+        </div>
+        <div>
+          <button className="btn" onClick={submitAddNode} >Add a new course</button>
+          <button className="btn" onClick={submitDeleteNode}>Delete a course</button>
+          <button className="btn" onClick={clear}>Clear Everything</button>
+          <button className="btn" onClick={submitGenerate}>Generate CourseFlow</button>
+        </div>
       </div>
-      <Flow onDelete={onDelete} />
+      <Flow />
     </div>
   );
 };
