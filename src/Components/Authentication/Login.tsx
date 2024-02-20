@@ -7,14 +7,16 @@ import { AuthState } from '../../Zustand/storeAuth'
 
 const selector = (state: AuthState) => ({
     setAccessToken: state.setAccessToken,
-    setRefreshToken: state.setRefreshToken
+    setRefreshToken: state.setRefreshToken,
+    setStatus: state.setStatus,
+    setUsername: state.setUsername
 })
 
 const Login = () => {
 
-  const { setAccessToken, setRefreshToken } = useAuthStore(selector)
+  const { setAccessToken, setRefreshToken, setStatus, setUsername } = useAuthStore(selector)
 
-  const [ username, setUsername ] = useState<string>("")
+  const [ username, setName ] = useState<string>("")
   const [ password, setPassword ] = useState<string>("")
   const [ err, setErr ] = useState<string>("")
 
@@ -42,6 +44,8 @@ const Login = () => {
       const data = response?.data 
       setAccessToken(data?.token)
       setRefreshToken(data?.refreshToken)
+      setStatus("LoggedIn")
+      setUsername(username)
 
       navigate('/main')
 
@@ -68,7 +72,7 @@ const Login = () => {
           type='text'
           required
           value={username}
-          onChange={(evt) => setUsername(evt.target.value)}
+          onChange={(evt) => setName(evt.target.value)}
           className='login-input'
         />
         <label htmlFor='password' className='input-label'>Password <span style={{color: '#EE4B2B'}}>*</span></label>

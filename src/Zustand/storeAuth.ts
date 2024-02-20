@@ -8,7 +8,9 @@ export type AuthState = {
     refreshToken: string,
     setAccessToken: (token: string) => void,
     setRefreshToken: (token: string) => void,
-    setStatus: (status: string) => void
+    setStatus: (status: string) => void,
+    setUsername: (username: string) => void,
+    setPassword: (password: string) => void,
 }
 
 const useAuthStore = create<AuthState>()((set, get) => ({
@@ -30,6 +32,16 @@ const useAuthStore = create<AuthState>()((set, get) => ({
     setStatus: (status: string) => {
         set({
             status
+        })
+    },
+    setUsername: (username: string) => {
+        set({
+            username
+        })
+    },
+    setPassword: (password: string) => {
+        set({
+            password
         })
     }
 })
