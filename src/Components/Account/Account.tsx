@@ -35,12 +35,17 @@ const Account = () => {
                 }
             )        
             
-            console.log(response)
-            
+            // console.log(response)
             /// Response: response.data = array of elements, each has .content = array of string (courses)
-            setFlows(response.data)
-            console.log(flows)
 
+            const newFlow = response.data.filter((ele: any) => {
+            
+                console.log("compare ", ele.user, username)
+                
+                return ele.user === username
+            })
+            console.log("Flows after filter, ", newFlow)
+            setFlows(newFlow)
 
         } catch (err: any) {
             console.log("Get flows error: ", err)
@@ -60,8 +65,6 @@ const Account = () => {
     /// Get the data
     useEffect(() => {
         getAllFlow()
-
-        flows.filter((ele: any) => ele.user === username)
     }, [])
 
     /// To edit each flow
