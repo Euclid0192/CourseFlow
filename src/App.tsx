@@ -8,6 +8,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import About from "./Components/About/About";
 import Login from "./Components/Authentication/Login";
 import Signup from "./Components/Authentication/Signup";
+import Account from "./Components/Account/Account";
 
 const App = () => {
 
@@ -15,9 +16,6 @@ const App = () => {
     <>
       {/* <NavBar /> */}
       <Routes>
-        {/* <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/main" element={<MainFeature />} /> */}
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
@@ -26,6 +24,7 @@ const App = () => {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
           </Route>
+          <Route path="user" element={<Account />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>

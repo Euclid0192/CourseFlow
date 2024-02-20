@@ -3,16 +3,41 @@ import './NavBar.css'
 import FlowChartIcon from "remixicon-react/FlowChartIcon"
 import { UserExpert } from "grommet-icons"
 import useAuthStore, { AuthState } from "../../Zustand/storeAuth"
+import axiosInstance from "../../configs/axios"
 
 const selector = (state: AuthState) => ({
-  username: state.username
+  username: state.username,
+  accessToken: state.accessToken,
+  setUsername: state.setUsername,
+  setAccessToken: state.setAccessToken,
+  setRefreshToken: state.setRefreshToken
 })
 
 const NavBar = () => {
 
   const navigate = useNavigate()
 
-  const { username } = useAuthStore(selector)
+  const { username, setUsername, setAccessToken, setRefreshToken } = useAuthStore(selector)
+
+  const logout = async () => {
+    try {
+      const response = await axiosInstance.post("/auth/logout")      
+      console.log("Logging out... ", response)
+
+      navigate("/auth/login")
+
+    } catch (err: any) {
+
+      console.log("Error while logging out...", err)
+
+    }
+
+    navigate("/auth/login")     
+    setUsername("")
+    setAccessToken("")
+    setRefreshToken("")         
+
+  }
 
   /// When not logged in, show login/signup button
   const AuthButtons = () => {
@@ -31,6 +56,7 @@ const NavBar = () => {
       <Link className="account-info" to="/user">
         <UserExpert className="account-icon" size="30px"/>   
         <p className="account-username">{username}</p>  
+        <button className="btn" onClick={logout}>Logout</button>
       </Link>
     )
   }
