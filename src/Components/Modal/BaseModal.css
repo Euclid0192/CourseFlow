@@ -1,0 +1,15 @@
+.base-modal {
+    background-color: antiquewhite;
+    border-radius: 20px;
+    width: 20vw;
+    height: 30vh;
+}
+
+.modal-close-btn {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}

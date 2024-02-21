@@ -40,4 +40,15 @@ input {
   margin-left: 5px;
 }
 
+.naming-modal {
+  position: absolute;
+  top: 50vh;
+  background-color: antiquewhite;
+  z-index: 3;
+}
+
+.naming-modal::backdrop {
+  background: hsl(0 0% 0% / 50%);
+}
+
 

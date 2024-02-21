@@ -1,0 +1,21 @@
+.naming-modal-form {
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    text-align: left;
+}
+
+.naming-label {
+    font-size: 2rem;
+    color: gray
+}
+
+.naming-input {
+    height: 30px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

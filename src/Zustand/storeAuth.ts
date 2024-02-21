@@ -13,7 +13,7 @@ export type AuthState = {
     setPassword: (password: string) => void,
 }
 
-const useAuthStore = create<AuthState>()((set, get) => ({
+const useAuthStore = create<AuthState>()((set, _get) => ({
     username: '',
     password: '',
     status: '',
