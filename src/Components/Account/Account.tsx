@@ -68,15 +68,24 @@ const Account = () => {
     }, [])
 
     /// To edit each flow
-    const submitEditFlow = () => {
-        navigate("/main")
+    const submitEditFlow = (flowId: string, title: string, nodes: any, edges: any) => {
+        navigate(`/main/${flowId}`, 
+            { 
+                state: {
+                    flowId,
+                    title, 
+                    nodes, 
+                    edges
+                }
+            }
+        )
     }
 
-    const UserFlow = ({title} : {title: string}) => {
+    const UserFlow = ({title, flowId, nodes, edges} : {title: string, flowId: string, nodes: any, edges: any}) => {
         return (
             <div className='flow-element'>
                 <h2>{title}</h2>
-                <button className='edit-btn' onClick={submitEditFlow}>
+                <button className='edit-btn' onClick={() => submitEditFlow(flowId, title, nodes, edges)}>
                     <Edit size='30px'/>
                 </button>
             </div>
@@ -89,7 +98,7 @@ const Account = () => {
         <div className='account__container'>
             <h1 className='welcome-msg'>Welcome, {username}! 😁</h1>
             {/* <button className='btn' onClick={getAllFlow}>Get the flows</button> */}
-            {flows.map((f: any) => <UserFlow title={f.title} key={f._id}/> )}
+            {flows.map((f: any) => <UserFlow title={f.title} flowId={f._id} nodes={f.nodes} edges={f.edges} key={f._id}/> )}
         </div>
     )
 }

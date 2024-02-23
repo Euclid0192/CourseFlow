@@ -54,8 +54,8 @@ const NamingModal = ({ isOpen, onClose } : {isOpen: boolean, onClose: () => void
                 {
                     user: username,
                     title,
-                    nodes,
-                    edges
+                    nodes: nodesList,
+                    edges: edgesList,
                 },
                 {
                     headers: {

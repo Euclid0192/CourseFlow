@@ -19,7 +19,12 @@ const App = () => {
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="main" element={<MainFeature />} />
+          
+          <Route path="main" element={<Outlet />}>
+            <Route index element={<MainFeature />} />
+            <Route path=":flowId" element={<MainFeature />} />
+          </Route>
+
           <Route path="auth" element={<Outlet />}>
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
