@@ -12,7 +12,7 @@ const Tutorial = () => {
     <div className='about__tutorial'>
         <div className='about__tutorial--left-view'>
             <div className='tutorial'>
-                <p className='intro'>Though not explicitly specified, CoursesFlow have to modes that you can choose: custom and auto-generated, each 
+                <p className='intro'>Though not explicitly specified, CoursesFlow have 2 modes that you can choose: custom and auto-generated, each 
                 associates with its own type of nodes.</p>
                 <p className='mode'>Auto-generated Mode <Services /></p>
                 <ul>
