@@ -3,7 +3,7 @@ import useAuthStore, { AuthState } from "../../Zustand/storeAuth"
 import axiosInstance from '../../configs/axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Edit } from 'grommet-icons'
+import { Edit, Trash } from 'grommet-icons'
 
 const selector = (state: AuthState) => ({
   username: state.username,
@@ -81,13 +81,42 @@ const Account = () => {
         )
     }
 
+    /// To delete a flow
+    const submitDeleteFlow = async (flowId: string) => {
+        try {
+            const response = await axiosInstance.delete('/flows',
+                {
+                    data: {
+                        id: flowId,
+                    },
+                    headers: {
+                        Authorization: 'Bearer ' + accessToken
+                    }
+                }
+            )
+
+            console.log("response from deletion...", response)
+
+            getAllFlow()
+
+
+        } catch (err: any) {
+            console.log("Error while deleting ", err)
+        }
+    }
+
     const UserFlow = ({title, flowId, nodes, edges} : {title: string, flowId: string, nodes: any, edges: any}) => {
         return (
             <div className='flow-element'>
                 <h2>{title}</h2>
-                <button className='edit-btn' onClick={() => submitEditFlow(flowId, title, nodes, edges)}>
-                    <Edit size='30px'/>
-                </button>
+                <div className='edit-btn-container'>
+                    <button className='edit-btn' onClick={() => submitEditFlow(flowId, title, nodes, edges)}>
+                        <Edit size='30px'/>
+                    </button>
+                    <button className='delete-btn' onClick={() => submitDeleteFlow(flowId)}>
+                        <Trash size='30px' />
+                    </button>                    
+                </div>
             </div>
         )
     }
