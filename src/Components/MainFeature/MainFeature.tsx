@@ -13,14 +13,18 @@ import {
   Edge
 } from 'reactflow'
 import { nanoid } from "nanoid";
+import axiosInstance from "../../configs/axios";
 
 const selector = (state: any) => ({
+  nodes: state.nodes,
+  edges: state.edges,
   addNode: state.addNode,
   deleteNode: state.deleteNode,
   setNodes: state.setNodes,
   setEdges: state.setEdges,
   clear: state.clear,
-  generateFlow: state.generateFlow
+  generateFlow: state.generateFlow,
+  accessToken: state.accessToken
 });
 
 const authSelector = (state: AuthState) => ({
@@ -33,12 +37,15 @@ const MainFeature = () => {
   const navigate = useNavigate()
 
   const {
+    nodes, 
+    edges,
     addNode,
     deleteNode,
     setNodes, 
     setEdges,
     clear,
-    generateFlow
+    generateFlow,
+    accessToken
   } = useNodeEdgeStore(selector)
 
   const { state } = useLocation()
@@ -48,7 +55,7 @@ const MainFeature = () => {
     if (state)
     {
 
-      const { flowId, title, nodes, edges } = state 
+      const { nodes, edges } = state 
 
       console.log(state)
 
@@ -155,12 +162,57 @@ const MainFeature = () => {
 
     if (!username)
     {
-      console.log("Not logged in yet...")
       alert("You need to log in or sign up to save your flow")
       navigate("/auth/login")
     }
 
-    setModalVisible(true)
+    /// new flow -> Save
+    if (!state)
+      setModalVisible(true)
+    /// former flow -> update
+    else {
+      const { flowId, title } = state
+      const nodesList = nodes.map((ele: any) => ({
+        nodeId: ele.id,
+        title: ele.data.label,
+        type: ele.type,
+        position: ele.position
+      })) 
+  
+      console.log("nodes for BE, ", nodesList)
+  
+      const edgesList = edges.map((ele: any) => ({
+        source: Number(ele.source),
+        destination: Number(ele.target)
+      }))
+  
+      console.log("edges for BE, ", edgesList)
+
+      /// submit the save to server
+      try {
+          const response = await axiosInstance.patch('/flows',
+              {
+                  id: flowId,
+                  user: username,
+                  title,
+                  nodes: nodesList,
+                  edges: edgesList,
+              },
+              {
+                  headers: {
+                      Authorization: 'Bearer ' + accessToken
+                  }
+              }
+          )
+
+          console.log("Response from saving...", response)
+
+          navigate('/user')
+          
+      } catch (err: any) {
+          console.log("error while saving...", err)
+      }
+    }
 
   }
 
