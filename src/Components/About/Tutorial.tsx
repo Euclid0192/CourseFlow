@@ -16,9 +16,9 @@ const Tutorial = () => {
                 associates with its own type of nodes.</p>
                 <p className='mode'>Auto-generated Mode <Services /></p>
                 <ul>
-                  <li>Currently, this mode only applies to students majoring in Computer Science at Michigan State University</li>
-                  <li>Just type in the course code, then choose Generate Flow button. A chronological flow of courses will be shown right away!.
-                    You can freely move the nodes around whatever you want for better look 🤩
+                  <li>Currently, this mode only applies to students majoring in Computer Science at Michigan State University.</li>
+                  <li>Just type in the course code, then choose Generate Flow button. A chronological flow of courses will be shown right away!
+                    You can freely move the nodes around whatever you want for better look. 🤩
                   </li>
                   <li>
                   You can then create an account or log in to your old account to freely save your work to the server and edit it later.
@@ -27,7 +27,7 @@ const Tutorial = () => {
                 <p className='mode'>Custom Mode <Edit /></p>
                 <p className='intro'>There will be a starting node in this mode. The node associated with this node is special:</p>
                 <ul>
-                  <li>To move it around, hold the <Pan size='small'/> icon</li>
+                  <li>To move it around, hold the <Pan size='small'/> icon.</li>
                   <li>To change content of node, type in the center.</li>
                   <li>To create new node, drag from the current node to the plane. A new node will be auto-created for you.</li>
                 </ul>   
